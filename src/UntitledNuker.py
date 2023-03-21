@@ -85,9 +85,9 @@ print(f'{colors["main"]}\n\n                  __  __  __   __  ______ __  ______
       "\n"
       "\n"
       "\n"
-      f"{colors['white']}                           Author: {colors['main']}ICE#4449\n"
+      f"{colors['white']}                           Author: {colors['main']}Bimmortal\n"
       f"{colors['white']}                           Version: {colors['main']}{version} {checkVersion()}\n"
-      f"{colors['white']}                           GitHub: {colors['main']}https://github.com/ICEGXG/UntitledNuker\n\n{colors['white']}")
+      f"{colors['white']}                           
 
 """
 Fetching prefix, token and owner ID's from config
@@ -191,8 +191,7 @@ async def help(ctx):
     await msg_delete(ctx)
     p = bot.command_prefix
     embed = discord.Embed(title="Help", color=embedColor)
-    embed.set_author(name="Untitled Nuker",
-                     url="https://github.com/ICEGXG/UntitledNuker")
+    embed.set_author(name="Easy")
     embed.add_field(
         name="Nuke", value=f">>> `{p}1 <ban 1/0> <your text>`", inline=False)
     embed.add_field(name="Ban everyone", value=f">>> `{p}2`", inline=False)
@@ -352,7 +351,7 @@ async def settingsActivity(ctx, action, activityType="playing", *, text=f"Untitl
 
 @bot.command(name='1', aliases=["nk", "nuke"])
 @commands.check(isWhitelisted)
-async def nuke(ctx, ban: bool = True, text: str = "Untitled Nuker"):
+async def nuke(ctx, ban: bool = True, text: str = "Bye"):
     await msg_delete(ctx)
 
     """
@@ -442,7 +441,7 @@ async def kickEveryone(ctx):
 
 @bot.command(name="4", aliases=["chen"])
 @commands.check(isWhitelisted)
-async def renameEveryone(ctx, *, name="Untitled Nuker"):
+async def renameEveryone(ctx, *, name="Easy"):
     await msg_delete(ctx)
     for m in ctx.guild.members:
         if m.id not in owners:
@@ -457,7 +456,7 @@ async def renameEveryone(ctx, *, name="Untitled Nuker"):
 
 @bot.command(name="5", aliases=["dme"])
 @commands.check(isWhitelisted)
-async def dmEveryone(ctx, *, msg="Untitled Nuker"):
+async def dmEveryone(ctx, *, msg="Easy"):
     await msg_delete(ctx)
     for m in ctx.guild.members:
         if m.id not in owners:
@@ -472,7 +471,7 @@ async def dmEveryone(ctx, *, msg="Untitled Nuker"):
 
 @bot.command(name="6", aliases=["sa"])
 @commands.check(isWhitelisted)
-async def spamToAllChannels(ctx, amount: int = 50, *, text="@everyone Untitled Nuker"):
+async def spamToAllChannels(ctx, amount: int = 50, *, text="@everyone bye"):
     await msg_delete(ctx)
     for i in range(amount):
         for ch in ctx.guild.channels:
@@ -485,7 +484,7 @@ async def spamToAllChannels(ctx, amount: int = 50, *, text="@everyone Untitled N
 
 @bot.command(name='7', aliases=["sc"])
 @commands.check(isWhitelisted)
-async def spamToCurrentChannel(ctx, amount: int = 50, *, text="@everyone Untitled Nuker"):
+async def spamToCurrentChannel(ctx, amount: int = 50, *, text="@everyone bye"):
     await msg_delete(ctx)
     for i in range(amount):
         try:
@@ -521,7 +520,7 @@ async def deleteAllRoles(ctx):
 
 @bot.command(name="10", aliases=["sch"])
 @commands.check(isWhitelisted)
-async def spamWithChannels(ctx, amount: int = 25, *, name="Untitled Nuker"):
+async def spamWithChannels(ctx, amount: int = 25, *, name="@everyone bye"):
     await msg_delete(ctx)
     for i in range(amount):
         try:
@@ -533,7 +532,7 @@ async def spamWithChannels(ctx, amount: int = 25, *, name="Untitled Nuker"):
 
 @bot.command(name="11", aliases=["sr"])
 @commands.check(isWhitelisted)
-async def spamWithRoles(ctx, amount: int = 25, *, name="Untitled Nuker"):
+async def spamWithRoles(ctx, amount: int = 25, *, name="Easy"):
     await msg_delete(ctx)
     for i in range(amount):
         try:
@@ -561,7 +560,7 @@ async def editServerIcon(ctx):
 
 @bot.command(name='13', aliases=["sn"])
 @commands.check(isWhitelisted)
-async def editServerName(ctx, *, name="Untitled Nuker"):
+async def editServerName(ctx, *, name="Easy"):
     await msg_delete(ctx)
     try:
         await ctx.guild.edit(name=name)
@@ -572,7 +571,7 @@ async def editServerName(ctx, *, name="Untitled Nuker"):
 
 @bot.command(name="14", aliases=["ga"])
 @commands.check(isWhitelisted)
-async def getAdmin(ctx, *, rolename="Untitled Nuker"):
+async def getAdmin(ctx, *, rolename="Easy"):
     await msg_delete(ctx)
     try:
         perms = discord.Permissions(administrator=True)
@@ -590,7 +589,7 @@ async def reviveGuild(ctx, guildId: int = None):
     if guildId:
         guild = bot.get_guild(guildId)
         try:
-            await guild.create_text_channel(name="Untitled Nuker")
+            await guild.create_text_channel(name="Easy")
             print(f"{msgs['+']} Revived {guild}")
         except:
             print(f"{msgs['error']} Can't revive {guild}")
